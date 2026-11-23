@@ -4,538 +4,881 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TOOLNEST - Discover 100 AI tools and useful online apps for music, video, images, writing and productivity.">
-<meta name="theme-color" content="#090909">
-<title>TOOLNEST — Find the right tool</title>
+<meta name="description" content="TOOLNEST - Discover 200 AI tools for images, video, music, writing, coding, productivity and more.">
+<meta name="theme-color" content="#0b0b0b">
+<title>TOOLNEST – Discover the Best AI Tools</title>
 
 <style>
-:root{
---bg:#090909;--surface:#151515;--ink:#f5f5f5;
---muted:#aaa49a;--line:#332d23;--gold:#d6ad60;
---gold2:#f0ca7b;--radius:17px;
+:root {
+  --bg:#0b0b0b;
+  --panel:#151515;
+  --panel2:#1d1d1d;
+  --gold:#d6ad55;
+  --gold2:#f1d58b;
+  --text:#f5f5f5;
+  --muted:#a5a5a5;
+  --border:#303030;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-a{color:inherit}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+a{color:inherit;text-decoration:none}
 button,input,select{font:inherit}
-.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
-.topbar{background:rgba(9,9,9,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-size:22px;font-weight:850;letter-spacing:-.8px}
-.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#f0ca7b,#9c7131);display:grid;place-items:center;color:#090909;font-weight:900}
-.brand span:last-child{color:var(--gold)}
-.navlinks{display:flex;align-items:center;gap:25px}
-.navlinks a{text-decoration:none;color:#c5bdaf;font-size:14px;font-weight:650}
-.navlinks a:hover,.footer a:hover{color:var(--gold2)}
-.nav-actions{display:flex;align-items:center;gap:10px}
-.lang{border:1px solid #51422b;background:#171717;border-radius:10px;padding:8px 11px;font-weight:750;color:var(--gold);cursor:pointer}
-.submit-link{background:linear-gradient(135deg,#e5bd70,#a77b38);color:#090909;text-decoration:none;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:750}
-.hero{padding:78px 0 56px;background:radial-gradient(ellipse at 50% 0%,#302516 0%,#15110c 38%,#090909 78%)}
-.hero-inner{text-align:center;max-width:820px;margin:auto}
-.eyebrow{display:inline-flex;padding:7px 12px;border-radius:99px;background:#292115;color:#e8bd70;border:1px solid #574326;font-size:12px;font-weight:800}
-h1{font-size:clamp(38px,6vw,66px);line-height:1.06;letter-spacing:-2.7px;margin:20px 0 16px}
-.accent{color:var(--gold)}
-.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:17px}
-.searchbox{margin:30px auto 0;max-width:680px;display:flex;align-items:center;gap:10px;padding:8px 9px 8px 17px;background:#171717;border:1px solid #51422b;border-radius:15px}
-.searchbox input{border:0;outline:0;flex:1;min-width:0;background:transparent;color:#fff;font-size:15px}
-.searchbox input::placeholder{color:#888078}
-.searchbox button{border:0;border-radius:10px;background:linear-gradient(135deg,#e5bd70,#a77b38);color:#090909;padding:12px 18px;font-weight:750;cursor:pointer}
-.quick-tags{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:17px}
-.quick-tags button,.filter{border:1px solid #403522;background:#171717;border-radius:99px;padding:7px 12px;color:var(--gold);font-size:12px;cursor:pointer}
-.quick-tags button:hover,.filter.active{border-color:var(--gold);background:#332718}
-.section{padding:54px 0;background:#090909}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
-.section-head h2{font-size:27px;letter-spacing:-.8px}
-.section-head p{color:var(--muted);font-size:14px;margin-top:4px}
-.count{font-size:13px;color:var(--gold)}
-.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
-.category{border:1px solid var(--line);background:var(--surface);color:#f5f5f5;border-radius:15px;padding:18px 15px;text-align:left;cursor:pointer;min-height:125px;transition:.18s}
-.category:hover,.category.active{border-color:var(--gold);transform:translateY(-2px);background:#211b11}
-.cat-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:#2a2114;color:#e5bd70;font-size:19px;margin-bottom:12px}
-.category strong{display:block;font-size:14px}
-.category small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-.filters{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}
-.filter-left{display:flex;gap:8px;flex-wrap:wrap}
-.filter{font-weight:700}
-.filter.active{color:var(--gold2)}
-.sort{border:1px solid #403522;background:#171717;border-radius:10px;padding:8px 13px;color:var(--gold);font-size:12px}
-.tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.tool-card{background:linear-gradient(145deg,#191919,#101010);border:1px solid var(--line);border-radius:17px;padding:19px;display:flex;flex-direction:column;min-height:245px;transition:.18s}
-.tool-card:hover{transform:translateY(-3px);border-color:#b58b4b;box-shadow:0 12px 30px rgba(214,173,96,.1)}
-.tool-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.tool-logo{width:43px;height:43px;border-radius:13px;background:#292115;display:grid;place-items:center;font-size:19px;font-weight:850;color:#e5bd70}
-.pill{font-size:10px;font-weight:800;padding:5px 8px;border-radius:99px;background:#302318;color:#e9b76b}
-.pill.free{background:#1d3020;color:#9bd6a3}
-.tool-card h3{font-size:17px;margin:15px 0 5px}
-.tool-card p{color:var(--muted);font-size:13px;line-height:1.55}
-.tool-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
-.tag{font-size:10px;color:#c7b99f;background:#25211b;border-radius:6px;padding:4px 7px}
-.tool-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:17px}
-.tool-category{font-size:11px;color:#b9a783;font-weight:700}
-.visit{color:#e5bd70;font-size:12px;font-weight:800;text-decoration:none}
-.visit:hover{color:#f5d18c;text-decoration:underline}
-.empty{grid-column:1/-1;text-align:center;padding:48px 20px;background:#151515;border:1px dashed #51422b;border-radius:16px;color:#c5bdaf}
-.notice{margin-top:22px;padding:14px 16px;border-radius:12px;background:#211b12;border:1px solid #574326;color:#d8bd8a;font-size:12px}
-.about{background:linear-gradient(135deg,#17130d,#090909);padding:58px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}
-.about h2{font-size:30px;line-height:1.2;margin-bottom:13px;color:var(--gold2)}
-.about p{color:#bdb5a8;font-size:14px}
-.benefits{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.benefit{padding:15px;border:1px solid #403522;background:#191919;border-radius:13px;font-size:13px;color:#d4cbbb}
-.benefit b{display:block;color:#e5bd70;margin-bottom:4px}
-.footer{padding:28px 0;background:#050505;border-top:1px solid var(--line);color:#aaa49a}
-.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;font-size:12px}
-.footer a{color:var(--gold);text-decoration:none;margin-left:15px}
-::selection{background:#d6ad60;color:#090909}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #d6ad60;outline-offset:3px}
-@media(max-width:900px){
-.categories{grid-template-columns:repeat(3,1fr)}
-.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.navlinks{gap:14px}
+header{
+  border-bottom:1px solid var(--border);
+  background:#101010;padding:17px 5%;
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;flex-wrap:wrap;
 }
-@media(max-width:650px){
-.wrap{width:calc(100% - 28px)}
-.nav{min-height:68px;flex-wrap:wrap;padding:12px 0}
-.navlinks{order:3;width:100%;justify-content:center;padding:5px 0 2px}
-.navlinks a{font-size:12px;color:var(--gold)}
-.brand{font-size:19px}
-.brand-mark{width:34px;height:34px}
-.submit-link{display:none}
-.hero{padding:55px 0 42px}
-h1{letter-spacing:-1.8px}
-.hero p{font-size:15px}
-.searchbox{gap:7px}
-.searchbox button{padding:11px 12px;font-size:12px}
-.section{padding:40px 0}
-.section-head{align-items:start;flex-direction:column;gap:5px}
-.section-head h2{font-size:24px}
-.categories{grid-template-columns:repeat(2,1fr);gap:9px}
-.category{padding:14px;min-height:115px}
-.tools-grid{grid-template-columns:1fr}
-.tool-card{min-height:220px}
-.filters{align-items:flex-start;flex-direction:column}
-.about-grid{grid-template-columns:1fr;gap:24px}
-.about h2{font-size:26px}
-.benefits{gap:9px}
+.logo{font-size:27px;font-weight:900;letter-spacing:2px;color:var(--gold)}
+.logo span{color:white}
+nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+nav a{font-size:14px;color:#ddd}
+nav a:hover{color:var(--gold)}
+.lang{
+  background:#202020;border:1px solid var(--gold);
+  color:var(--gold);padding:9px 14px;border-radius:7px;
+  cursor:pointer;
+}
+.hero{
+  text-align:center;padding:65px 20px 40px;
+  background:radial-gradient(ellipse at top,#292012 0%,#0b0b0b 65%);
+}
+.hero h1{font-size:clamp(32px,5vw,55px);margin:0 0 15px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--muted);max-width:650px;margin:0 auto 25px;line-height:1.7}
+.stats{
+  display:flex;justify-content:center;gap:35px;
+  flex-wrap:wrap;margin-top:30px;
+}
+.stat strong{display:block;color:var(--gold);font-size:26px}
+.stat small{color:var(--muted)}
+main{max-width:1250px;margin:auto;padding:30px 20px 65px}
+.section-title{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:20px;
+}
+.section-title h2{font-size:25px;margin:0}
+.section-title span{color:var(--gold)}
+.controls{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:12px;margin-bottom:20px;
+}
+.controls input,.controls select{
+  width:100%;padding:14px;background:var(--panel);
+  color:white;border:1px solid var(--border);
+  border-radius:8px;outline:none;
+}
+.controls input:focus,.controls select:focus{
+  border-color:var(--gold);
+}
+.categories{
+  display:flex;gap:9px;overflow-x:auto;
+  padding:4px 0 18px;margin-bottom:15px;
+}
+.category{
+  white-space:nowrap;padding:10px 15px;
+  background:var(--panel);border:1px solid var(--border);
+  color:#ddd;border-radius:30px;cursor:pointer;
+}
+.category.active,.category:hover{
+  background:var(--gold);color:#111;border-color:var(--gold);
+}
+.results{
+  color:var(--muted);font-size:13px;margin-bottom:15px;
+}
+.grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+}
+.tool{
+  background:var(--panel);border:1px solid var(--border);
+  padding:19px;border-radius:12px;display:flex;
+  flex-direction:column;min-height:185px;
+  transition:.2s;
+}
+.tool:hover{
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  box-shadow:0 8px 25px #0008;
+}
+.tool-top{display:flex;justify-content:space-between;gap:8px}
+.tool h3{font-size:17px;margin:12px 0 8px}
+.tool p{font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 15px}
+.tool-bottom{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-top:auto;gap:8px;
+}
+.tag{
+  font-size:11px;padding:5px 8px;border-radius:5px;
+  background:#302817;color:var(--gold2);
+}
+.visit{
+  font-size:12px;color:var(--gold);font-weight:bold;
+}
+.visit:hover{text-decoration:underline}
+.pagination{
+  display:flex;justify-content:center;gap:8px;
+  margin-top:30px;flex-wrap:wrap;
+}
+.pagination button{
+  background:var(--panel);border:1px solid var(--border);
+  color:white;padding:10px 15px;border-radius:7px;cursor:pointer;
+}
+.pagination button.active{
+  background:var(--gold);color:#111;border-color:var(--gold);
+}
+.empty{text-align:center;padding:50px;color:var(--muted)}
+.info{
+  margin-top:55px;padding:30px;background:var(--panel);
+  border:1px solid var(--border);border-radius:12px;
+}
+.info h2{color:var(--gold)}
+.info p{color:var(--muted);line-height:1.7}
+footer{
+  padding:30px 20px;text-align:center;
+  border-top:1px solid var(--border);
+  color:var(--muted);font-size:13px;
+}
+footer a{color:var(--gold);margin:0 8px}
+.cookie-overlay{
+  position:fixed;inset:0;background:#0009;
+  z-index:1000;display:none;
+}
+.cookie-box{
+  position:fixed;z-index:1001;bottom:20px;left:50%;
+  transform:translateX(-50%);width:min(570px,calc(100% - 25px));
+  background:#191919;border:1px solid var(--gold);
+  padding:23px;border-radius:13px;display:none;
+  box-shadow:0 10px 50px #000b;
+}
+.cookie-box h2{color:var(--gold);margin:0 0 12px;font-size:21px}
+.cookie-box p{font-size:13px;line-height:1.6;color:#ccc}
+.cookie-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.cookie-actions button{
+  padding:11px 14px;border-radius:7px;cursor:pointer;
+  border:1px solid var(--gold);font-weight:bold;
+}
+.accept{background:var(--gold);color:#111}
+.reject,.customize{
+  background:#222;color:white;
+}
+.cookie-settings{display:none;margin-top:15px}
+.cookie-settings label{
+  display:flex;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.cookie-settings input{accent-color:var(--gold)}
+.cookie-link{color:var(--gold);font-size:12px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){
+  header{justify-content:center}
+  nav{justify-content:center}
+  .controls{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{padding-top:45px}
+}
+@media(max-width:420px){
+  .grid{grid-template-columns:1fr}
+  .stats{gap:20px}
 }
 </style>
 </head>
 
 <body>
-<header class="topbar">
-<div class="wrap nav">
-<a class="brand" href="#" aria-label="TOOLNEST home">
-<span class="brand-mark">T</span><span>TOOLNEST</span>
-</a>
-<nav class="navlinks" aria-label="Main navigation">
-<a href="#tools" data-i18n="navTools">Explore tools</a>
-<a href="#categories" data-i18n="navCategories">Categories</a>
-<a href="#about" data-i18n="navAbout">About</a>
-</nav>
-<div class="nav-actions">
-<button class="lang" id="languageBtn" type="button">RO</button>
-<a class="submit-link" href="mailto:hello@toolnest.example?subject=Suggest%20a%20tool" data-i18n="suggest">Suggest a tool</a>
-</div>
-</div>
+
+<header>
+  <a href="index.html" class="logo">TOOL<span>NEST</span></a>
+  <nav>
+    <a href="#tools" data-en="AI Tools" data-ro="Instrumente AI">AI Tools</a>
+    <a href="#about" data-en="About" data-ro="Despre">About</a>
+    <a href="privacy.html" data-en="Privacy" data-ro="Confidențialitate">Privacy</a>
+    <a href="terms.html" data-en="Terms" data-ro="Termeni">Terms</a>
+    <button class="lang" id="langBtn">RO</button>
+  </nav>
 </header>
 
-<main>
 <section class="hero">
-<div class="wrap hero-inner">
-<span class="eyebrow" data-i18n="eyebrow">✦ A smarter way to find online tools</span>
-<h1><span data-i18n="heroStart">Find the right tool.</span><br><span class="accent" data-i18n="heroEnd">Make more possible.</span></h1>
-<p data-i18n="heroText">Explore useful AI tools and online apps for music, video, images, writing and everyday work.</p>
-
-<form class="searchbox" id="searchForm" role="search">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-<circle cx="11" cy="11" r="7" stroke="#b49a6d" stroke-width="2"/>
-<path d="m16 16 4 4" stroke="#b49a6d" stroke-width="2" stroke-linecap="round"/>
-</svg>
-<input id="searchInput" type="search" placeholder="Search tools..." aria-label="Search tools">
-<button type="submit" data-i18n="search">Search</button>
-</form>
-
-<div class="quick-tags">
-<button type="button" data-query="music"># <span data-i18n="tagMusic">AI music</span></button>
-<button type="button" data-query="video"># <span data-i18n="tagVideo">Video</span></button>
-<button type="button" data-query="image"># <span data-i18n="tagImage">Image</span></button>
-<button type="button" data-query="free"># <span data-i18n="tagFree">Free plans</span></button>
-</div>
-</div>
+  <h1 data-en="Discover the Best <span>AI Tools</span>"
+      data-ro="Descoperă cele mai bune <span>instrumente AI</span>">
+    Discover the Best <span>AI Tools</span>
+  </h1>
+  <p data-en="Explore 200 AI tools for creativity, productivity, business and everyday work. Find the right tool for your next idea."
+     data-ro="Explorează 200 de instrumente AI pentru creativitate, productivitate, afaceri și activitățile zilnice. Găsește instrumentul potrivit pentru următoarea ta idee.">
+    Explore 200 AI tools for creativity, productivity, business and everyday work.
+  </p>
+  <div class="stats">
+    <div class="stat"><strong>200</strong><small data-en="AI Tools" data-ro="Instrumente AI">AI Tools</small></div>
+    <div class="stat"><strong>10</strong><small data-en="Categories" data-ro="Categorii">Categories</small></div>
+    <div class="stat"><strong>2</strong><small data-en="Languages" data-ro="Limbi">Languages</small></div>
+  </div>
 </section>
 
-<section class="section" id="categories">
-<div class="wrap">
-<div class="section-head">
-<div><h2 data-i18n="categoriesTitle">Explore categories</h2><p data-i18n="categoriesText">Find a tool for what you want to create.</p></div>
-</div>
-<div class="categories" id="categoryGrid"></div>
-</div>
-</section>
+<main id="tools">
+  <div class="section-title">
+    <h2 data-en="Explore <span>AI Tools</span>" data-ro="Explorează <span>instrumentele AI</span>">
+      Explore <span>AI Tools</span>
+    </h2>
+  </div>
 
-<section class="section" id="tools" style="padding-top:8px">
-<div class="wrap">
-<div class="section-head">
-<div><h2 data-i18n="featuredTitle">Discover useful tools</h2><p data-i18n="featuredText">Explore 100 useful online tools.</p></div>
-<span class="count" id="resultCount"></span>
-</div>
-<div class="filters">
-<div class="filter-left" id="filters"></div>
-<select class="sort" id="sortSelect" aria-label="Sort tools">
-<option value="az">Name A–Z</option>
-<option value="za">Name Z–A</option>
-</select>
-</div>
-<div class="tools-grid" id="toolsGrid"></div>
-<div class="notice" data-i18n="disclaimer">
-Free-plan limits, prices and commercial-use rights may change. Always check the provider's official website.
-</div>
-</div>
-</section>
+  <div class="controls">
+    <input type="search" id="search"
+      placeholder="Search AI tools..."
+      data-placeholder-en="Search AI tools..."
+      data-placeholder-ro="Caută instrumente AI...">
+    <select id="priceFilter">
+      <option value="all" data-en="All pricing" data-ro="Toate prețurile">All pricing</option>
+      <option value="free" data-en="Free plan" data-ro="Plan gratuit">Free plan</option>
+      <option value="freemium" data-en="Freemium" data-ro="Freemium">Freemium</option>
+      <option value="paid" data-en="Paid" data-ro="Plătite">Paid</option>
+    </select>
+    <select id="sort">
+      <option value="popular" data-en="Popular first" data-ro="Cele mai populare">Popular first</option>
+      <option value="az" data-en="Name A-Z" data-ro="Nume A-Z">Name A-Z</option>
+      <option value="za" data-en="Name Z-A" data-ro="Nume Z-A">Name Z-A</option>
+    </select>
+  </div>
 
-<section class="about" id="about">
-<div class="wrap about-grid">
-<div>
-<h2 data-i18n="aboutTitle">Less searching. More creating.</h2>
-<p data-i18n="aboutText">TOOLNEST is an independent directory designed to make discovering online tools simpler.</p>
-</div>
-<div class="benefits">
-<div class="benefit"><b data-i18n="benefit1Title">Clear descriptions</b><span data-i18n="benefit1Text">Know what a tool is for.</span></div>
-<div class="benefit"><b data-i18n="benefit2Title">Official links</b><span data-i18n="benefit2Text">Go directly to the provider.</span></div>
-<div class="benefit"><b data-i18n="benefit3Title">Two languages</b><span data-i18n="benefit3Text">Browse in Romanian or English.</span></div>
-<div class="benefit"><b data-i18n="benefit4Title">Independent directory</b><span data-i18n="benefit4Text">No provider endorsement implied.</span></div>
-</div>
-</div>
-</section>
+  <div class="categories" id="categories"></div>
+  <div class="results" id="results"></div>
+  <div class="grid" id="toolGrid"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <section class="info" id="about">
+    <h2 data-en="About TOOLNEST" data-ro="Despre TOOLNEST">About TOOLNEST</h2>
+    <p data-en="TOOLNEST is an independent directory designed to help people discover AI tools and online services. We organize tools into useful categories to make discovery easier."
+       data-ro="TOOLNEST este un director independent creat pentru a ajuta utilizatorii să descopere instrumente AI și servicii online. Organizăm instrumentele în categorii utile pentru o navigare mai simplă.">
+      TOOLNEST is an independent directory designed to help people discover AI tools and online services.
+    </p>
+    <p data-en="Some tools offer free plans, trials or paid subscriptions. Pricing and features may change. Please check each provider's official website before signing up."
+       data-ro="Unele instrumente oferă planuri gratuite, perioade de probă sau abonamente plătite. Prețurile și funcțiile se pot modifica. Verifică site-ul oficial al fiecărui furnizor înainte de înregistrare.">
+      Some tools offer free plans, trials or paid subscriptions.
+    </p>
+  </section>
 </main>
 
-<footer class="footer">
-<div class="wrap footer-inner">
-<span>© <span id="year"></span> TOOLNEST. <span data-i18n="rights">All rights reserved.</span></span>
-<div>
-<a href="mailto:hello@toolnest.example" data-i18n="contact">Contact</a>
-<a href="privacy.html" data-i18n="privacy">Privacy</a>
-<a href="terms.html" data-i18n="terms">Terms</a>
-</div>
-</div>
+<footer>
+  <p>© <span id="year"></span> TOOLNEST. All rights reserved.</p>
+  <p>
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms of Service</a> |
+    <a href="#" id="cookiePreferences">Cookie Settings</a>
+  </p>
+  <p>Discover. Create. Explore.</p>
 </footer>
 
+<!-- COOKIE CONSENT -->
+<div class="cookie-overlay" id="cookieOverlay"></div>
+<div class="cookie-box" id="cookieBox">
+  <h2 id="cookieTitle">We use cookies 🍪</h2>
+  <p id="cookieText">
+    We use cookies to improve your experience, remember your preferences
+    and understand how visitors use our website. You can accept all cookies,
+    reject optional cookies or customize your preferences.
+  </p>
+
+  <div class="cookie-actions" id="mainCookieActions">
+    <button class="accept" id="acceptCookies">Accept All</button>
+    <button class="reject" id="rejectCookies">Reject Optional</button>
+    <button class="customize" id="customizeCookies">Customize</button>
+  </div>
+
+  <div class="cookie-settings" id="cookieSettings">
+    <label>
+      <span id="necessaryText">Necessary cookies (always active)</span>
+      <input type="checkbox" checked disabled>
+    </label>
+    <label>
+      <span id="analyticsText">Analytics cookies</span>
+      <input type="checkbox" id="analyticsConsent">
+    </label>
+    <label>
+      <span id="marketingText">Marketing cookies</span>
+      <input type="checkbox" id="marketingConsent">
+    </label>
+    <div class="cookie-actions">
+      <button class="accept" id="saveCookies">Save preferences</button>
+      <button class="reject" id="backCookies">Back</button>
+    </div>
+  </div>
+
+  <p>
+    <a href="privacy.html" class="cookie-link" id="cookiePrivacy">Privacy Policy</a>
+  </p>
+</div>
+
 <script>
-const translations={
-en:{
-navTools:"Explore tools",navCategories:"Categories",navAbout:"About",suggest:"Suggest a tool",
-eyebrow:"✦ A smarter way to find online tools",
-heroStart:"Find the right tool.",heroEnd:"Make more possible.",
-heroText:"Explore 100 AI tools and useful online apps for music, video, images, writing and everyday work.",
-search:"Search",placeholder:"Search tools, categories or features...",
-tagMusic:"AI music",tagVideo:"Video",tagImage:"Image",tagFree:"Free plans",
-categoriesTitle:"Explore categories",categoriesText:"Find a tool for what you want to create.",
-featuredTitle:"Discover useful tools",featuredText:"Explore our directory of 100 online tools.",
-all:"All tools",free:"Free plan",freemium:"Freemium",visit:"Visit website ↗",
-noResults:"No tools found. Try another search or category.",
-disclaimer:"Free-plan limits, availability, pricing and commercial-use rights can change. TOOLNEST is an independent directory. Always confirm details on the provider's official website.",
-aboutTitle:"Less searching. More creating.",
-aboutText:"TOOLNEST is an independent directory designed to make discovering online tools simpler. We help you find useful services for creativity, work and everyday tasks.",
-benefit1Title:"Clear descriptions",benefit1Text:"Know what a tool is for.",
-benefit2Title:"Official links",benefit2Text:"Go directly to the provider.",
-benefit3Title:"Two languages",benefit3Text:"Browse in Romanian or English.",
-benefit4Title:"Independent directory",benefit4Text:"No provider endorsement implied.",
-rights:"All rights reserved.",contact:"Contact",privacy:"Privacy",terms:"Terms",
-categories:{all:"All tools",music:"AI Music",video:"AI Video",image:"AI Images",writing:"Writing",productivity:"Productivity"}
-},
-ro:{
-navTools:"Explorează instrumentele",navCategories:"Categorii",navAbout:"Despre",suggest:"Propune un instrument",
-eyebrow:"✦ O metodă mai simplă de a găsi instrumente online",
-heroStart:"Găsește instrumentul potrivit.",heroEnd:"Creează mai mult.",
-heroText:"Descoperă 100 de instrumente AI și aplicații online pentru muzică, video, imagini, scriere și activitățile zilnice.",
-search:"Caută",placeholder:"Caută instrumente, categorii sau funcții...",
-tagMusic:"Muzică AI",tagVideo:"Video",tagImage:"Imagini",tagFree:"Planuri gratuite",
-categoriesTitle:"Explorează categoriile",categoriesText:"Găsește un instrument pentru ceea ce vrei să creezi.",
-featuredTitle:"Descoperă instrumente utile",featuredText:"Explorează directorul nostru cu 100 de instrumente online.",
-all:"Toate",free:"Plan gratuit",freemium:"Freemium",visit:"Vizitează site-ul ↗",
-noResults:"Nu am găsit instrumente. Încearcă altă căutare sau categorie.",
-disclaimer:"Limitele planurilor gratuite, disponibilitatea, prețurile și drepturile de utilizare comercială se pot schimba. TOOLNEST este un director independent. Verifică întotdeauna informațiile pe site-ul oficial.",
-aboutTitle:"Mai puțină căutare. Mai multă creație.",
-aboutText:"TOOLNEST este un director independent creat pentru a simplifica descoperirea instrumentelor online. Te ajutăm să găsești servicii utile pentru creativitate, muncă și activitățile zilnice.",
-benefit1Title:"Descrieri clare",benefit1Text:"Înțelegi la ce folosește un instrument.",
-benefit2Title:"Linkuri oficiale",benefit2Text:"Ajungi direct la furnizor.",
-benefit3Title:"Două limbi",benefit3Text:"Navighezi în română sau engleză.",
-benefit4Title:"Director independent",benefit4Text:"Nu implică susținerea furnizorilor.",
-rights:"Toate drepturile rezervate.",contact:"Contact",privacy:"Confidențialitate",terms:"Termeni",
-categories:{all:"Toate",music:"Muzică AI",video:"Video AI",image:"Imagini AI",writing:"Scriere",productivity:"Productivitate"}
-}
-};
+// =======================================
+// TOOLNEST - 200 AI TOOLS
+// =======================================
 
-// FORMAT: name, URL, category, plan, icon, English description, Romanian description
-
-const rawTools=[
-
-// 1–15 MUSIC
-["Suno","https://suno.com/","music","freemium","♫","Create songs from text prompts, with vocals and arrangements.","Creează melodii pornind de la instrucțiuni text, cu voci și aranjamente."],
-["Udio","https://www.udio.com/","music","freemium","♪","Generate music from text prompts and explore musical ideas.","Generează muzică din instrucțiuni text și explorează idei muzicale."],
-["BandLab","https://www.bandlab.com/","music","free","♫","Record, edit and collaborate on music in an online studio.","Înregistrează, editează și colaborează la muzică într-un studio online."],
-["Soundraw","https://soundraw.io/","music","freemium","S","Create royalty-friendly AI-generated background music.","Creează muzică de fundal cu ajutorul inteligenței artificiale."],
-["AIVA","https://www.aiva.ai/","music","freemium","A","Compose music in different styles with AI assistance.","Compune muzică în diferite stiluri cu ajutorul AI."],
-["Beatoven.ai","https://www.beatoven.ai/","music","freemium","B","Generate background music for videos and creative projects.","Generează muzică de fundal pentru videoclipuri și proiecte creative."],
-["Stable Audio","https://www.stableaudio.com/","music","freemium","♫","Generate audio and music from text descriptions.","Generează sunete și muzică din descrieri text."],
-["MusicFX","https://labs.google/fx/tools/music-fx","music","free","M","Experiment with AI-generated music and sound ideas.","Experimentează cu idei muzicale și sunete generate de AI."],
-["Moises","https://moises.ai/","music","freemium","M","Separate tracks, change keys and practice music.","Separă piste audio, schimbă tonalitatea și exersează muzica."],
-["LANDR","https://www.landr.com/","music","freemium","L","Master music and explore online music production tools.","Masterizează muzica și explorează instrumente de producție online."],
-["Audacity","https://www.audacityteam.org/","music","free","A","Record and edit audio with a free desktop application.","Înregistrează și editează audio cu o aplicație gratuită."],
-["REAPER","https://www.reaper.fm/","music","freemium","R","Record, edit and mix audio with a powerful DAW.","Înregistrează, editează și mixează audio cu un DAW performant."],
-["GarageBand","https://www.apple.com/mac/garageband/","music","free","G","Create music and record instruments on Apple devices.","Creează muzică și înregistrează instrumente pe dispozitive Apple."],
-["Hookpad","https://www.hooktheory.com/hookpad","music","freemium","H","Explore chords, melodies and songwriting ideas.","Explorează acorduri, melodii și idei pentru compoziție."],
-["Amped Studio","https://ampedstudio.com/","music","freemium","A","Produce and arrange music directly in your browser.","Produce și aranjează muzică direct în browser."],
-
-// 16–32 VIDEO
-["CapCut","https://www.capcut.com/","video","freemium","▶","Edit videos and create social media clips with effects.","Editează videoclipuri și creează clipuri pentru rețele sociale."],
-["Runway","https://runwayml.com/","video","freemium","R","Explore AI video generation and editing tools.","Explorează generarea și editarea video cu AI."],
-["Pika","https://pika.art/","video","freemium","P","Generate creative videos from text and images.","Generează videoclipuri creative din text și imagini."],
-["Luma AI","https://lumalabs.ai/","video","freemium","L","Create AI-generated videos and explore visual scenes.","Creează videoclipuri cu AI și explorează scene vizuale."],
-["Kling AI","https://klingai.com/","video","freemium","K","Generate videos and animate images using AI.","Generează videoclipuri și animează imagini cu AI."],
-["HeyGen","https://www.heygen.com/","video","freemium","H","Create AI avatar videos and translated presentations.","Creează videoclipuri cu avatare AI și prezentări traduse."],
-["Synthesia","https://www.synthesia.io/","video","freemium","S","Create presenter videos with AI avatars and voices.","Creează videoclipuri de prezentare cu avatare și voci AI."],
-["Descript","https://www.descript.com/","video","freemium","D","Edit audio and video using a transcript-based workflow.","Editează audio și video folosind transcrierea textului."],
-["VEED","https://www.veed.io/","video","freemium","V","Edit videos online, add subtitles and create clips.","Editează videoclipuri online, adaugă subtitrări și creează clipuri."],
-["InVideo AI","https://invideo.io/","video","freemium","I","Turn ideas and text prompts into video projects.","Transformă ideile și instrucțiunile text în videoclipuri."],
-["Fliki","https://fliki.ai/","video","freemium","F","Convert text into videos with AI voices.","Transformă textul în videoclipuri cu voci generate de AI."],
-["OpusClip","https://www.opus.pro/","video","freemium","O","Turn long videos into short social media clips.","Transformă videoclipurile lungi în clipuri scurte pentru social media."],
-["Adobe Express","https://www.adobe.com/express/","video","freemium","A","Create and edit videos and social media content.","Creează și editează videoclipuri și conținut pentru social media."],
-["DaVinci Resolve","https://www.blackmagicdesign.com/products/davinciresolve","video","free","D","Edit video, color grade and mix audio professionally.","Editează video, corectează culorile și mixează audio profesional."],
-["Clipchamp","https://clipchamp.com/","video","freemium","C","Edit videos online with templates and effects.","Editează videoclipuri online cu șabloane și efecte."],
-["Kapwing","https://www.kapwing.com/","video","freemium","K","Create, edit and subtitle online videos.","Creează, editează și subtitrează videoclipuri online."],
-["Vizard","https://vizard.ai/","video","freemium","V","Convert long recordings into shareable short videos.","Transformă înregistrările lungi în videoclipuri scurte."],
-
-// 33–50 IMAGES
-["Canva","https://www.canva.com/","image","freemium","C","Design graphics, presentations and social media content.","Creează grafică, prezentări și materiale pentru rețele sociale."],
-["Leonardo AI","https://leonardo.ai/","image","freemium","✧","Generate and edit AI images and visual assets.","Generează și editează imagini AI și materiale vizuale."],
-["Adobe Firefly","https://firefly.adobe.com/","image","freemium","✦","Generate and edit images with Adobe creative AI tools.","Generează și editează imagini cu instrumentele Adobe AI."],
-["Ideogram","https://ideogram.ai/","image","freemium","I","Generate images and designs with text rendering.","Generează imagini și designuri cu text integrat."],
-["Midjourney","https://www.midjourney.com/","image","freemium","M","Create artistic images from text prompts.","Creează imagini artistice pornind de la instrucțiuni text."],
-["Playground AI","https://playground.com/","image","freemium","P","Create and edit images using AI tools.","Creează și editează imagini folosind instrumente AI."],
-["Recraft","https://www.recraft.ai/","image","freemium","R","Generate illustrations, vector graphics and designs.","Generează ilustrații, grafică vectorială și designuri."],
-["Krea AI","https://www.krea.ai/","image","freemium","K","Create and enhance images with AI tools.","Creează și îmbunătățește imagini cu instrumente AI."],
-["Microsoft Designer","https://designer.microsoft.com/","image","freemium","D","Create designs and images with Microsoft's AI tools.","Creează designuri și imagini cu instrumentele AI Microsoft."],
-["Pixlr","https://pixlr.com/","image","freemium","P","Edit photos and create designs in your browser.","Editează fotografii și creează designuri în browser."],
-["remove.bg","https://www.remove.bg/","image","freemium","▧","Remove image backgrounds automatically.","Elimină automat fundalul imaginilor."],
-["PhotoRoom","https://www.photoroom.com/","image","freemium","P","Create product photos and remove backgrounds.","Creează fotografii de produs și elimină fundaluri."],
-["Clipdrop","https://clipdrop.co/","image","freemium","C","Edit, clean up and enhance images with AI.","Editează, curăță și îmbunătățește imagini cu AI."],
-["Upscayl","https://upscayl.org/","image","free","U","Upscale and improve image resolution for free.","Mărește rezoluția și îmbunătățește imaginile gratuit."],
-["GIMP","https://www.gimp.org/","image","free","G","Edit photos and create graphics with open-source software.","Editează fotografii și creează grafică folosind software open-source."],
-["Krita","https://krita.org/","image","free","K","Create digital paintings and illustrations.","Creează picturi digitale și ilustrații."],
-["Stable Diffusion","https://stability.ai/","image","freemium","S","Explore AI image generation technology and tools.","Explorează tehnologia și instrumentele de generare a imaginilor AI."],
-["Fotor","https://www.fotor.com/","image","freemium","F","Edit photos, create designs and enhance images.","Editează fotografii, creează designuri și îmbunătățește imagini."],
-
-// 51–66 WRITING
-["ChatGPT","https://chatgpt.com/","writing","freemium","✳","AI assistant for research, writing and brainstorming.","Asistent AI pentru documentare, scriere și generarea de idei."],
-["Claude","https://claude.ai/","writing","freemium","C","AI assistant for writing, analysis and problem solving.","Asistent AI pentru scriere, analiză și rezolvarea problemelor."],
-["Google Gemini","https://gemini.google.com/","writing","freemium","G","Google AI assistant for research and creative tasks.","Asistentul AI Google pentru documentare și activități creative."],
-["Perplexity","https://www.perplexity.ai/","writing","freemium","P","Research assistant that answers questions with sources.","Asistent de documentare care răspunde la întrebări cu surse."],
-["Grammarly","https://www.grammarly.com/","writing","freemium","G","Get suggestions for writing clarity, tone and grammar.","Primești sugestii pentru claritatea, tonul și gramatica textului."],
-["QuillBot","https://quillbot.com/","writing","freemium","Q","Paraphrase, summarize and improve written text.","Reformulează, rezumă și îmbunătățește textele."],
-["DeepL Write","https://www.deepl.com/write","writing","freemium","D","Improve writing and refine sentences in different languages.","Îmbunătățește textele și reformulează propoziții în diferite limbi."],
-["LanguageTool","https://languagetool.org/","writing","freemium","L","Check spelling, grammar and style in multiple languages.","Verifică ortografia, gramatica și stilul în mai multe limbi."],
-["Notion AI","https://www.notion.com/product/ai","writing","freemium","N","Write, summarize and organize information with AI.","Scrie, rezumă și organizează informații cu AI."],
-["Jasper","https://www.jasper.ai/","writing","freemium","J","Create marketing copy and business content.","Creează texte de marketing și conținut pentru afaceri."],
-["Copy.ai","https://www.copy.ai/","writing","freemium","C","Generate marketing content and business copy.","Generează conținut de marketing și texte comerciale."],
-["Writesonic","https://writesonic.com/","writing","freemium","W","Create articles and marketing content with AI.","Creează articole și conținut de marketing cu AI."],
-["Wordtune","https://www.wordtune.com/","writing","freemium","W","Rewrite sentences and improve written communication.","Reformulează propoziții și îmbunătățește comunicarea scrisă."],
-["Rytr","https://rytr.me/","writing","freemium","R","Generate drafts, descriptions and creative content.","Generează ciorne, descrieri și conținut creativ."],
-["Google AI Studio","https://aistudio.google.com/","writing","freemium","G","Experiment with Google's generative AI models.","Experimentează cu modelele de inteligență artificială Google."],
-["NotebookLM","https://notebooklm.google.com/","writing","freemium","N","Research and summarize information from your sources.","Documentează și rezumă informații din propriile surse."],
-
-// 67–100 PRODUCTIVITY
-["Notion","https://www.notion.com/","productivity","freemium","N","Organize notes, projects, documents and team knowledge.","Organizează notițe, proiecte, documente și informații de echipă."],
-["Trello","https://trello.com/","productivity","freemium","T","Manage projects using visual boards and cards.","Gestionează proiecte folosind panouri și carduri vizuale."],
-["Asana","https://asana.com/","productivity","freemium","A","Plan projects, tasks and team workflows.","Planifică proiecte, sarcini și fluxuri de lucru."],
-["ClickUp","https://clickup.com/","productivity","freemium","C","Manage tasks, projects and team collaboration.","Gestionează sarcini, proiecte și colaborarea în echipă."],
-["monday.com","https://monday.com/","productivity","freemium","M","Organize projects and automate team workflows.","Organizează proiecte și automatizează fluxurile de lucru."],
-["Todoist","https://todoist.com/","productivity","freemium","T","Manage personal tasks and daily to-do lists.","Gestionează sarcinile personale și listele zilnice."],
-["Google Docs","https://docs.google.com/","productivity","free","D","Create and collaborate on online documents.","Creează documente online și colaborează cu alte persoane."],
-["Google Sheets","https://sheets.google.com/","productivity","free","S","Create spreadsheets and analyze information online.","Creează foi de calcul și analizează informații online."],
-["Google Drive","https://drive.google.com/","productivity","freemium","D","Store, organize and share files in the cloud.","Stochează, organizează și partajează fișiere în cloud."],
-["Google Calendar","https://calendar.google.com/","productivity","free","C","Schedule events and organize your calendar.","Programează evenimente și organizează-ți calendarul."],
-["Google Meet","https://meet.google.com/","productivity","freemium","M","Hold online meetings and video calls.","Organizează întâlniri online și apeluri video."],
-["Slack","https://slack.com/","productivity","freemium","S","Communicate and collaborate with teams.","Comunică și colaborează cu echipe."],
-["Discord","https://discord.com/","productivity","freemium","D","Communicate through communities, channels and voice calls.","Comunică prin comunități, canale și apeluri vocale."],
-["Zoom","https://zoom.us/","productivity","freemium","Z","Host video meetings, webinars and online events.","Organizează întâlniri video, webinarii și evenimente online."],
-["Otter.ai","https://otter.ai/","productivity","freemium","O","Transcribe meetings and generate meeting notes.","Transcrie întâlniri și generează notițe."],
-["Fireflies.ai","https://fireflies.ai/","productivity","freemium","F","Record, transcribe and summarize online meetings.","Înregistrează, transcrie și rezumă întâlniri online."],
-["Fathom","https://fathom.video/","productivity","freemium","F","Record and summarize video meetings.","Înregistrează și rezumă întâlniri video."],
-["tl;dv","https://tldv.io/","productivity","freemium","T","Record and summarize online meetings.","Înregistrează și rezumă întâlniri online."],
-["Zapier","https://zapier.com/","productivity","freemium","Z","Connect apps and automate repetitive tasks.","Conectează aplicații și automatizează sarcinile repetitive."],
-["Make","https://www.make.com/","productivity","freemium","M","Build visual workflows and automate processes.","Construiește fluxuri vizuale și automatizează procese."],
-["n8n","https://n8n.io/","productivity","freemium","N","Build workflow automations and connect applications.","Construiește automatizări și conectează aplicații."],
-["IFTTT","https://ifttt.com/","productivity","freemium","I","Connect online services and automate simple actions.","Conectează servicii online și automatizează acțiuni simple."],
-["Airtable","https://www.airtable.com/","productivity","freemium","A","Organize information using databases and custom workflows.","Organizează informații folosind baze de date și fluxuri personalizate."],
-["Coda","https://coda.io/","productivity","freemium","C","Combine documents, tables and team workflows.","Combină documente, tabele și fluxuri de lucru."],
-["Miro","https://miro.com/","productivity","freemium","M","Collaborate using online whiteboards and diagrams.","Colaborează folosind table interactive și diagrame online."],
-["FigJam","https://www.figma.com/figjam/","productivity","freemium","F","Create collaborative online boards and diagrams.","Creează panouri și diagrame colaborative online."],
-["Excalidraw","https://excalidraw.com/","productivity","free","E","Draw diagrams and sketches using a simple online canvas.","Desenează diagrame și schițe într-un spațiu online simplu."],
-["Obsidian","https://obsidian.md/","productivity","freemium","O","Organize notes and connect ideas using linked documents.","Organizează notițe și conectează idei prin documente interconectate."],
-["Bitwarden","https://bitwarden.com/","productivity","freemium","B","Store and manage passwords securely.","Stochează și gestionează parole în siguranță."],
-["Proton Drive","https://proton.me/drive","productivity","freemium","P","Store and share files with encrypted cloud storage.","Stochează și partajează fișiere în cloud criptat."],
-["Dropbox","https://www.dropbox.com/","productivity","freemium","D","Store, synchronize and share files online.","Stochează, sincronizează și partajează fișiere online."],
-["WeTransfer","https://wetransfer.com/","productivity","freemium","W","Send and share large files online.","Trimite și partajează fișiere mari online."],
-["Calendly","https://calendly.com/","productivity","freemium","C","Schedule appointments and share booking links.","Programează întâlniri și partajează linkuri de rezervare."],
-["Typeform","https://www.typeform.com/","productivity","freemium","T","Create online forms, surveys and questionnaires.","Creează formulare, sondaje și chestionare online."]
+const categories = [
+  {id:"all",en:"All Tools",ro:"Toate instrumentele"},
+  {id:"chat",en:"AI Chatbots",ro:"Chatboți AI"},
+  {id:"image",en:"Image Generation",ro:"Generare imagini"},
+  {id:"video",en:"Video AI",ro:"Video AI"},
+  {id:"audio",en:"Music & Audio",ro:"Muzică și audio"},
+  {id:"writing",en:"Writing",ro:"Scriere"},
+  {id:"productivity",en:"Productivity",ro:"Productivitate"},
+  {id:"coding",en:"Coding",ro:"Programare"},
+  {id:"research",en:"Research",ro:"Cercetare"},
+  {id:"marketing",en:"Marketing",ro:"Marketing"},
+  {id:"design",en:"Design",ro:"Design"}
 ];
 
-const tools=rawTools.map((x,i)=>({
-id:i+1,name:x[0],url:x[1],category:x[2],status:x[3],
-icon:x[4],en:x[5],ro:x[6]
-}));
-
-const categoryIcons={
-all:"✦",music:"♫",video:"▶",image:"▧",writing:"✎",productivity:"⚙"
+// Each entry: name, website, pricing, popularity score
+const rawTools = {
+chat:[
+["ChatGPT","https://chatgpt.com","freemium",100],
+["Claude","https://claude.ai","freemium",99],
+["Google Gemini","https://gemini.google.com","freemium",98],
+["Microsoft Copilot","https://copilot.microsoft.com","free",97],
+["Perplexity","https://www.perplexity.ai","freemium",96],
+["Poe","https://poe.com","freemium",95],
+["Character.AI","https://character.ai","freemium",94],
+["DeepSeek","https://www.deepseek.com","free",93],
+["Mistral Le Chat","https://chat.mistral.ai","freemium",92],
+["Grok","https://grok.com","freemium",91],
+["Meta AI","https://www.meta.ai","free",90],
+["Pi AI","https://pi.ai","free",89],
+["HuggingChat","https://huggingface.co/chat","free",88],
+["You.com","https://you.com","freemium",87],
+["Phind","https://www.phind.com","freemium",86],
+["Kimi","https://www.kimi.com","freemium",85],
+["Qwen Chat","https://chat.qwen.ai","free",84],
+["Duck.ai","https://duck.ai","free",83],
+["Replika","https://replika.com","freemium",82],
+["Luzia","https://www.luzia.com","freemium",81]
+],
+image:[
+["Midjourney","https://www.midjourney.com","paid",100],
+["DALL-E","https://openai.com/dall-e-3","paid",99],
+["Leonardo AI","https://leonardo.ai","freemium",98],
+["Ideogram","https://ideogram.ai","freemium",97],
+["Adobe Firefly","https://firefly.adobe.com","freemium",96],
+["Stable Diffusion","https://stability.ai","free",95],
+["FLUX","https://blackforestlabs.ai","freemium",94],
+["Playground AI","https://playground.com","freemium",93],
+["Recraft","https://www.recraft.ai","freemium",92],
+["NightCafe","https://nightcafe.studio","freemium",91],
+["SeaArt AI","https://www.seaart.ai","freemium",90],
+["Tensor.Art","https://tensor.art","freemium",89],
+["DreamStudio","https://dreamstudio.ai","paid",88],
+["Artbreeder","https://www.artbreeder.com","freemium",87],
+["Craiyon","https://www.craiyon.com","freemium",86],
+["Bing Image Creator","https://www.bing.com/images/create","free",85],
+["Imagine.art","https://www.imagine.art","freemium",84],
+["getimg.ai","https://getimg.ai","freemium",83],
+["PixAI","https://pixai.art","freemium",82],
+["OpenArt","https://openart.ai","freemium",81]
+],
+video:[
+["Runway","https://runwayml.com","freemium",100],
+["Pika","https://pika.art","freemium",99],
+["Sora","https://sora.com","paid",98],
+["Kling AI","https://klingai.com","freemium",97],
+["Luma Dream Machine","https://lumalabs.ai","freemium",96],
+["HeyGen","https://www.heygen.com","freemium",95],
+["Synthesia","https://www.synthesia.io","paid",94],
+["InVideo AI","https://invideo.io","freemium",93],
+["VEED","https://www.veed.io","freemium",92],
+["Kapwing","https://www.kapwing.com","freemium",91],
+["Vidu AI","https://www.vidu.com","freemium",90],
+["PixVerse","https://pixverse.ai","freemium",89],
+["Haiper","https://haiper.ai","freemium",88],
+["D-ID","https://www.d-id.com","freemium",87],
+["Colossyan","https://www.colossyan.com","paid",86],
+["Elai.io","https://elai.io","freemium",85],
+["Fliki","https://fliki.ai","freemium",84],
+["OpusClip","https://www.opus.pro","freemium",83],
+["Descript","https://www.descript.com","freemium",82],
+["Wondershare Virbo","https://virbo.wondershare.com","freemium",81]
+],
+audio:[
+["Suno","https://suno.com","freemium",100],
+["Udio","https://www.udio.com","freemium",99],
+["ElevenLabs","https://elevenlabs.io","freemium",98],
+["AIVA","https://www.aiva.ai","freemium",97],
+["Soundraw","https://soundraw.io","paid",96],
+["Beatoven.ai","https://www.beatoven.ai","freemium",95],
+["Mubert","https://mubert.com","freemium",94],
+["Loudly","https://www.loudly.com","freemium",93],
+["Boomy","https://boomy.com","freemium",92],
+["Soundful","https://soundful.com","freemium",91],
+["Stable Audio","https://stableaudio.com","freemium",90],
+["MusicGen","https://huggingface.co/spaces/facebook/MusicGen","free",89],
+["Voice.ai","https://voice.ai","freemium",88],
+["Kits AI","https://www.kits.ai","freemium",87],
+["Voicemod","https://www.voicemod.net","freemium",86],
+["Adobe Podcast","https://podcast.adobe.com","free",85],
+["Auphonic","https://auphonic.com","freemium",84],
+["LALAL.AI","https://www.lalal.ai","freemium",83],
+["Moises","https://moises.ai","freemium",82],
+["Cleanvoice","https://cleanvoice.ai","freemium",81]
+],
+writing:[
+["Grammarly","https://www.grammarly.com","freemium",100],
+["QuillBot","https://quillbot.com","freemium",99],
+["Jasper","https://www.jasper.ai","paid",98],
+["Copy.ai","https://www.copy.ai","freemium",97],
+["Writesonic","https://writesonic.com","freemium",96],
+["Rytr","https://rytr.me","freemium",95],
+["Wordtune","https://www.wordtune.com","freemium",94],
+["DeepL Write","https://www.deepl.com/write","free",93],
+["LanguageTool","https://languagetool.org","freemium",92],
+["Sudowrite","https://sudowrite.com","paid",91],
+["Anyword","https://www.anyword.com","paid",90],
+["HyperWrite","https://www.hyperwriteai.com","freemium",89],
+["TextCortex","https://textcortex.com","freemium",88],
+["Simplified","https://simplified.com","freemium",87],
+["Jenni AI","https://jenni.ai","freemium",86],
+["Rytr","https://rytr.me","freemium",85],
+["Smodin","https://smodin.io","freemium",84],
+["Hemingway Editor","https://hemingwayapp.com","freemium",83],
+["ProWritingAid","https://prowritingaid.com","freemium",82],
+["Sudowrite","https://sudowrite.com","paid",81]
+],
+productivity:[
+["Notion AI","https://www.notion.com/product/ai","paid",100],
+["ClickUp AI","https://clickup.com/ai","paid",99],
+["Zapier","https://zapier.com","freemium",98],
+["Make","https://www.make.com","freemium",97],
+["n8n","https://n8n.io","freemium",96],
+["Taskade","https://www.taskade.com","freemium",95],
+["Reclaim AI","https://reclaim.ai","freemium",94],
+["Motion","https://www.usemotion.com","paid",93],
+["Fireflies.ai","https://fireflies.ai","freemium",92],
+["Otter.ai","https://otter.ai","freemium",91],
+["Fathom","https://fathom.video","free",90],
+["tl;dv","https://tldv.io","freemium",89],
+["Mem","https://mem.ai","freemium",88],
+["Sunsama","https://sunsama.com","paid",87],
+["Trello","https://trello.com","freemium",86],
+["Asana","https://asana.com","freemium",85],
+["Airtable","https://www.airtable.com","freemium",84],
+["Monday.com","https://monday.com","freemium",83],
+["Rewind","https://www.rewind.ai","paid",82],
+["Read AI","https://www.read.ai","freemium",81]
+],
+coding:[
+["GitHub Copilot","https://github.com/features/copilot","paid",100],
+["Cursor","https://cursor.com","freemium",99],
+["Windsurf","https://windsurf.com","freemium",98],
+["Replit","https://replit.com","freemium",97],
+["Codeium","https://codeium.com","freemium",96],
+["Tabnine","https://www.tabnine.com","freemium",95],
+["Amazon Q Developer","https://aws.amazon.com/q/developer","freemium",94],
+["Sourcegraph Cody","https://sourcegraph.com/cody","freemium",93],
+["Bolt.new","https://bolt.new","freemium",92],
+["Lovable","https://lovable.dev","freemium",91],
+["v0","https://v0.app","freemium",90],
+["Cline","https://cline.bot","free",89],
+["Continue","https://continue.dev","free",88],
+["Aider","https://aider.chat","free",87],
+["Blackbox AI","https://www.blackbox.ai","freemium",86],
+["Devin","https://devin.ai","paid",85],
+["Amazon CodeWhisperer","https://aws.amazon.com/q/developer","freemium",84],
+["Sourcegraph","https://sourcegraph.com","freemium",83],
+["OpenHands","https://www.all-hands.dev","free",82],
+["Mutable AI","https://mutable.ai","paid",81]
+],
+research:[
+["Elicit","https://elicit.com","freemium",100],
+["Consensus","https://consensus.app","freemium",99],
+["Scite","https://scite.ai","freemium",98],
+["ResearchRabbit","https://www.researchrabbit.ai","free",97],
+["Semantic Scholar","https://www.semanticscholar.org","free",96],
+["Connected Papers","https://www.connectedpapers.com","freemium",95],
+["SciSpace","https://scispace.com","freemium",94],
+["Explainpaper","https://www.explainpaper.com","freemium",93],
+["Humata","https://www.humata.ai","freemium",92],
+["ChatPDF","https://www.chatpdf.com","freemium",91],
+["NotebookLM","https://notebooklm.google.com","free",90],
+["Scholarcy","https://www.scholarcy.com","freemium",89],
+["Perplexity Pages","https://www.perplexity.ai","freemium",88],
+["Wolfram Alpha","https://www.wolframalpha.com","freemium",87],
+["Kagi","https://kagi.com","paid",86],
+["Tavily","https://tavily.com","freemium",85],
+["Exa","https://exa.ai","freemium",84],
+["Glasp","https://glasp.co","free",83],
+["Genei","https://www.genei.io","paid",82],
+["OpenAlex","https://openalex.org","free",81]
+],
+marketing:[
+["HubSpot AI","https://www.hubspot.com","freemium",100],
+["Surfer SEO","https://surferseo.com","paid",99],
+["Semrush","https://www.semrush.com","freemium",98],
+["Ahrefs","https://ahrefs.com","paid",97],
+["Canva Magic Studio","https://www.canva.com/magic/","freemium",96],
+["Predis.ai","https://predis.ai","freemium",95],
+["Ocoya","https://www.ocoya.com","freemium",94],
+["Buffer","https://buffer.com","freemium",93],
+["Hootsuite","https://www.hootsuite.com","paid",92],
+["Metricool","https://metricool.com","freemium",91],
+["SocialBee","https://socialbee.com","paid",90],
+["AdCreative.ai","https://www.adcreative.ai","paid",89],
+["Creatopy","https://www.creatopy.com","freemium",88],
+["Phrasee","https://phrasee.co","paid",87],
+["Brand24","https://brand24.com","paid",86],
+["Brandwatch","https://www.brandwatch.com","paid",85],
+["Mailchimp","https://mailchimp.com","freemium",84],
+["Klaviyo","https://www.klaviyo.com","freemium",83],
+["Brevo","https://www.brevo.com","freemium",82],
+["Julius AI","https://julius.ai","freemium",81]
+],
+design:[
+["Canva","https://www.canva.com","freemium",100],
+["Figma","https://www.figma.com","freemium",99],
+["Adobe Express","https://www.adobe.com/express/","freemium",98],
+["Uizard","https://uizard.io","freemium",97],
+["Visily","https://www.visily.ai","freemium",96],
+["Framer","https://www.framer.com","freemium",95],
+["Webflow","https://webflow.com","freemium",94],
+["Looka","https://looka.com","paid",93],
+["Khroma","https://www.khroma.co","free",92],
+["Fontjoy","https://fontjoy.com","free",91],
+["Remove.bg","https://www.remove.bg","freemium",90],
+["Clipdrop","https://clipdrop.co","freemium",89],
+["Let's Enhance","https://letsenhance.io","freemium",88],
+["Upscayl","https://upscayl.org","free",87],
+["Vectorizer AI","https://vectorizer.ai","paid",86],
+["Autodraw","https://www.autodraw.com","free",85],
+["Spline","https://spline.design","freemium",84],
+["Kittl","https://www.kittl.com","freemium",83],
+["Visme","https://www.visme.co","freemium",82],
+["Designs.ai","https://designs.ai","paid",81]
+]
 };
 
-let language="en";
-let activeCategory="all";
-let activeStatus="all";
-let searchTerm="";
+// =======================================
+// LANGUAGE
+// =======================================
 
-const t=key=>translations[language][key]||key;
-const categoryName=key=>translations[language].categories[key]||key;
+let language = localStorage.getItem("toolnest_language") || "en";
 
-function applyTranslations(){
-document.documentElement.lang=language;
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-const key=el.dataset.i18n;
-if(translations[language][key])el.textContent=translations[language][key];
-});
-document.getElementById("searchInput").placeholder=t("placeholder");
-document.getElementById("languageBtn").textContent=language==="en"?"RO":"EN";
-renderCategories();
-renderFilters();
-renderTools();
+function translatePage(){
+  document.documentElement.lang = language;
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.innerHTML = el.dataset[language];
+  });
+  document.querySelectorAll("[data-placeholder-en]").forEach(el=>{
+    el.placeholder=el.dataset["placeholder"+(language==="en"?"En":"Ro")];
+  });
+  document.getElementById("langBtn").textContent =
+    language==="en"?"RO":"EN";
+
+  document.getElementById("cookieTitle").textContent =
+    language==="en"?"We use cookies 🍪":"Folosim cookie-uri 🍪";
+  document.getElementById("cookieText").textContent =
+    language==="en"
+    ?"We use cookies to improve your experience, remember your preferences and understand how visitors use our website. You can accept all cookies, reject optional cookies or customize your preferences."
+    :"Folosim cookie-uri pentru a îmbunătăți experiența, a reține preferințele și a înțelege modul în care vizitatorii folosesc site-ul. Poți accepta toate cookie-urile, le poți refuza pe cele opționale sau îți poți personaliza preferințele.";
+
+  document.getElementById("acceptCookies").textContent =
+    language==="en"?"Accept All":"Acceptă toate";
+  document.getElementById("rejectCookies").textContent =
+    language==="en"?"Reject Optional":"Refuză opționalele";
+  document.getElementById("customizeCookies").textContent =
+    language==="en"?"Customize":"Personalizează";
+  document.getElementById("saveCookies").textContent =
+    language==="en"?"Save preferences":"Salvează preferințele";
+  document.getElementById("backCookies").textContent =
+    language==="en"?"Back":"Înapoi";
+  document.getElementById("necessaryText").textContent =
+    language==="en"?"Necessary cookies (always active)":"Cookie-uri necesare (mereu active)";
+  document.getElementById("analyticsText").textContent =
+    language==="en"?"Analytics cookies":"Cookie-uri de analiză";
+  document.getElementById("marketingText").textContent =
+    language==="en"?"Marketing cookies":"Cookie-uri de marketing";
+  document.getElementById("cookiePrivacy").textContent =
+    language==="en"?"Privacy Policy":"Politica de confidențialitate";
+
+  renderCategories();
+  renderTools();
 }
+
+document.getElementById("langBtn").addEventListener("click",()=>{
+  language=language==="en"?"ro":"en";
+  localStorage.setItem("toolnest_language",language);
+  translatePage();
+});
+
+// =======================================
+// BUILD TOOL LIST
+// =======================================
+
+const tools=[];
+
+Object.entries(rawTools).forEach(([category,items])=>{
+  items.forEach(item=>{
+    tools.push({
+      name:item[0],
+      url:item[1],
+      pricing:item[2],
+      popularity:item[3],
+      category
+    });
+  });
+});
+
+if(tools.length!==200){
+  console.error("Tool count error:",tools.length);
+}
+
+// =======================================
+// CATEGORY FILTER
+// =======================================
+
+let activeCategory="all";
+let currentPage=1;
+const perPage=20;
 
 function renderCategories(){
-const keys=["all","music","video","image","writing","productivity"];
-document.getElementById("categoryGrid").innerHTML=keys.map(key=>{
-const amount=key==="all"?tools.length:tools.filter(x=>x.category===key).length;
-return `<button class="category ${activeCategory===key?"active":""}" data-category="${key}" type="button">
-<span class="cat-icon">${categoryIcons[key]}</span>
-<strong>${categoryName(key)}</strong>
-<small>${amount} ${language==="en"?"tools":"instrumente"}</small>
-</button>`;
-}).join("");
+  const container=document.getElementById("categories");
+  container.innerHTML="";
 
-document.querySelectorAll("[data-category]").forEach(btn=>{
-btn.addEventListener("click",()=>{
-activeCategory=btn.dataset.category;
-renderCategories();
-renderTools();
-document.getElementById("tools").scrollIntoView({behavior:"smooth"});
-});
-});
+  categories.forEach(cat=>{
+    const btn=document.createElement("button");
+    btn.className="category"+
+      (activeCategory===cat.id?" active":"");
+    btn.textContent=cat[language];
+    btn.addEventListener("click",()=>{
+      activeCategory=cat.id;
+      currentPage=1;
+      renderCategories();
+      renderTools();
+    });
+    container.appendChild(btn);
+  });
 }
 
-function renderFilters(){
-const items=[["all",t("all")],["free",t("free")],["freemium",t("freemium")]];
-document.getElementById("filters").innerHTML=items.map(([value,label])=>
-`<button class="filter ${activeStatus===value?"active":""}" data-status="${value}" type="button">${label}</button>`
-).join("");
+// =======================================
+// FILTER AND SORT
+// =======================================
 
-document.querySelectorAll("[data-status]").forEach(btn=>{
-btn.addEventListener("click",()=>{
-activeStatus=btn.dataset.status;
-renderFilters();
-renderTools();
-});
-});
+function getFilteredTools(){
+  const query=document.getElementById("search").value
+    .trim().toLowerCase();
+  const price=document.getElementById("priceFilter").value;
+  const sort=document.getElementById("sort").value;
+
+  let result=tools.filter(tool=>{
+    const categoryMatch=
+      activeCategory==="all"||tool.category===activeCategory;
+
+    const searchMatch=
+      tool.name.toLowerCase().includes(query)||
+      tool.category.toLowerCase().includes(query);
+
+    const priceMatch=price==="all"||tool.pricing===price;
+
+    return categoryMatch&&searchMatch&&priceMatch;
+  });
+
+  if(sort==="az") result.sort((a,b)=>a.name.localeCompare(b.name));
+  if(sort==="za") result.sort((a,b)=>b.name.localeCompare(a.name));
+  if(sort==="popular") result.sort((a,b)=>b.popularity-a.popularity);
+
+  return result;
 }
+
+// =======================================
+// DISPLAY TOOLS
+// =======================================
 
 function renderTools(){
-const sort=document.getElementById("sortSelect").value;
-let results=tools.filter(tool=>{
-const haystack=[
-tool.name,tool.category,tool.en,tool.ro,
-tool.status
-].join(" ").toLowerCase();
+  const container=document.getElementById("toolGrid");
+  const results=document.getElementById("results");
+  const pagination=document.getElementById("pagination");
 
-return (activeCategory==="all"||tool.category===activeCategory)
-&&(activeStatus==="all"||tool.status===activeStatus)
-&&(!searchTerm||haystack.includes(searchTerm));
-});
+  const filtered=getFilteredTools();
+  const totalPages=Math.ceil(filtered.length/perPage);
 
-results.sort((a,b)=>sort==="za"
-?b.name.localeCompare(a.name)
-:a.name.localeCompare(b.name));
+  if(currentPage>totalPages)currentPage=1;
 
-document.getElementById("resultCount").textContent=
-results.length+" "+(language==="en"?"tools":"instrumente");
+  const start=(currentPage-1)*perPage;
+  const pageItems=filtered.slice(start,start+perPage);
 
-const grid=document.getElementById("toolsGrid");
+  results.textContent=
+    language==="en"
+    ?`Showing ${filtered.length} tools`
+    :`Se afișează ${filtered.length} instrumente`;
 
-if(!results.length){
-grid.innerHTML=`<div class="empty">${t("noResults")}</div>`;
-return;
+  container.innerHTML="";
+
+  if(!pageItems.length){
+    container.innerHTML=
+      `<div class="empty" style="grid-column:1/-1">
+      ${language==="en"?"No tools found. Try another search.":"Nu am găsit instrumente. Încearcă altă căutare."}
+      </div>`;
+  }
+
+  pageItems.forEach(tool=>{
+    const cat=categories.find(c=>c.id===tool.category);
+    const card=document.createElement("article");
+    card.className="tool";
+
+    const pricingLabels={
+      free:language==="en"?"Free plan":"Plan gratuit",
+      freemium:"Freemium",
+      paid:language==="en"?"Paid":"Plătit"
+    };
+
+    card.innerHTML=`
+      <div class="tool-top">
+        <span class="tag">${cat[language]}</span>
+        <span class="tag">${pricingLabels[tool.pricing]}</span>
+      </div>
+      <h3></h3>
+      <p>${language==="en"
+        ?"Visit the official website to explore features and available plans."
+        :"Vizitează site-ul oficial pentru a descoperi funcțiile și planurile disponibile."}</p>
+      <div class="tool-bottom">
+        <span class="visit">${language==="en"?"Explore tool →":"Descoperă →"}</span>
+        <span class="tag">AI</span>
+      </div>`;
+
+    card.querySelector("h3").textContent=tool.name;
+
+    const link=document.createElement("a");
+    link.href=tool.url;
+    link.target="_blank";
+    link.rel="noopener noreferrer";
+    link.className="visit";
+    link.textContent=language==="en"?"Open website ↗":"Deschide site-ul ↗";
+    card.querySelector(".tool-bottom").replaceChild(
+      link,card.querySelector(".visit")
+    );
+
+    container.appendChild(card);
+  });
+
+  pagination.innerHTML="";
+
+  if(totalPages>1){
+    for(let i=1;i<=totalPages;i++){
+      const btn=document.createElement("button");
+      btn.textContent=i;
+      btn.className=i===currentPage?"active":"";
+      btn.addEventListener("click",()=>{
+        currentPage=i;
+        renderTools();
+        document.getElementById("tools").scrollIntoView({
+          behavior:"smooth"
+        });
+      });
+      pagination.appendChild(btn);
+    }
+  }
 }
 
-grid.innerHTML=results.map(tool=>`
-<article class="tool-card">
-<div class="tool-top">
-<div class="tool-logo">${tool.icon}</div>
-<span class="pill ${tool.status==="free"?"free":""}">
-${tool.status==="free"?(language==="en"?"Free plan":"Plan gratuit"):"Freemium"}
-</span>
-</div>
-<h3>${tool.name}</h3>
-<p>${tool[language]}</p>
-<div class="tool-meta">
-<span class="tag">${categoryName(tool.category)}</span>
-<span class="tag">${tool.status==="free"?"Free":"Free tier / Paid options"}</span>
-</div>
-<div class="tool-bottom">
-<span class="tool-category">${categoryName(tool.category)}</span>
-<a class="visit" href="${tool.url}" target="_blank" rel="noopener noreferrer">${t("visit")}</a>
-</div>
-</article>
-`).join("");
+document.getElementById("search").addEventListener("input",()=>{
+  currentPage=1;renderTools();
+});
+document.getElementById("priceFilter").addEventListener("change",()=>{
+  currentPage=1;renderTools();
+});
+document.getElementById("sort").addEventListener("change",()=>{
+  currentPage=1;renderTools();
+});
+
+// =======================================
+// COOKIE CONSENT
+// =======================================
+
+const cookieBox=document.getElementById("cookieBox");
+const cookieOverlay=document.getElementById("cookieOverlay");
+const cookieSettings=document.getElementById("cookieSettings");
+const mainCookieActions=document.getElementById("mainCookieActions");
+
+function showCookieBox(){
+  cookieBox.style.display="block";
+  cookieOverlay.style.display="block";
 }
 
-document.getElementById("languageBtn").addEventListener("click",()=>{
-language=language==="en"?"ro":"en";
-applyTranslations();
+function hideCookieBox(){
+  cookieBox.style.display="none";
+  cookieOverlay.style.display="none";
+  cookieSettings.style.display="none";
+  mainCookieActions.style.display="flex";
+}
+
+function saveConsent(consent){
+  const data={
+    necessary:true,
+    analytics:!!consent.analytics,
+    marketing:!!consent.marketing,
+    savedAt:new Date().toISOString(),
+    version:1
+  };
+
+  localStorage.setItem("toolnest_cookie_consent",JSON.stringify(data));
+  hideCookieBox();
+
+  // Optional analytics and marketing scripts should only
+  // be initialized here, after the corresponding consent.
+  if(data.analytics){
+    window.dispatchEvent(new Event("toolnest:analytics-consent"));
+  }
+  if(data.marketing){
+    window.dispatchEvent(new Event("toolnest:marketing-consent"));
+  }
+}
+
+document.getElementById("acceptCookies").addEventListener("click",()=>{
+  saveConsent({analytics:true,marketing:true});
 });
 
-document.getElementById("searchForm").addEventListener("submit",event=>{
-event.preventDefault();
-searchTerm=document.getElementById("searchInput").value.trim().toLowerCase();
-renderTools();
-document.getElementById("tools").scrollIntoView({behavior:"smooth"});
+document.getElementById("rejectCookies").addEventListener("click",()=>{
+  saveConsent({analytics:false,marketing:false});
 });
 
-document.getElementById("searchInput").addEventListener("input",event=>{
-searchTerm=event.target.value.trim().toLowerCase();
-renderTools();
+document.getElementById("customizeCookies").addEventListener("click",()=>{
+  mainCookieActions.style.display="none";
+  cookieSettings.style.display="block";
 });
 
-document.querySelectorAll("[data-query]").forEach(btn=>{
-btn.addEventListener("click",()=>{
-const query=btn.dataset.query;
-document.getElementById("searchInput").value=query;
-searchTerm=query;
-activeCategory="all";
-activeStatus="all";
-renderCategories();
-renderFilters();
-renderTools();
-document.getElementById("tools").scrollIntoView({behavior:"smooth"});
-});
+document.getElementById("backCookies").addEventListener("click",()=>{
+  cookieSettings.style.display="none";
+  mainCookieActions.style.display="flex";
 });
 
-document.getElementById("sortSelect").addEventListener("change",renderTools);
+document.getElementById("saveCookies").addEventListener("click",()=>{
+  saveConsent({
+    analytics:document.getElementById("analyticsConsent").checked,
+    marketing:document.getElementById("marketingConsent").checked
+  });
+});
+
+document.getElementById("cookiePreferences").addEventListener("click",e=>{
+  e.preventDefault();
+  const saved=JSON.parse(
+    localStorage.getItem("toolnest_cookie_consent")||"{}"
+  );
+  document.getElementById("analyticsConsent").checked=!!saved.analytics;
+  document.getElementById("marketingConsent").checked=!!saved.marketing;
+  showCookieBox();
+});
+
+const existingConsent=localStorage.getItem("toolnest_cookie_consent");
+
+if(!existingConsent){
+  showCookieBox();
+}
+
+// =======================================
+// START
+// =======================================
+
 document.getElementById("year").textContent=new Date().getFullYear();
 
-applyTranslations();
-
-// Check that the directory contains exactly 100 entries.
-console.log("TOOLNEST tools:",tools.length);
+renderCategories();
+translatePage();
 </script>
+
 </body>
 </html>
 
